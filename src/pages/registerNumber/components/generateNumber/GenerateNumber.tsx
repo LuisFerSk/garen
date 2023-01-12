@@ -7,8 +7,7 @@ interface GenerateNumberProps {
     setValue: Function
 }
 
-export default function GenerateNumber(props: GenerateNumberProps) {
-
+export default function GenerateNumber(props: GenerateNumberProps): JSX.Element {
     const { title, value, setValue } = props;
 
     return (
@@ -23,7 +22,7 @@ export default function GenerateNumber(props: GenerateNumberProps) {
                 <Button
                     fullWidth
                     variant="contained"
-                    onClick={setValue()}
+                    onClick={() => setValue()}
                 >
                     Generar
                 </Button>

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { DocumentData, getFirestore, QuerySnapshot } from "firebase/firestore";
+// import { Analytics, getAnalytics } from "firebase/analytics";
+import { getFirestore, DocumentData, QuerySnapshot } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,15 +17,21 @@ const firebaseConfig = {
     measurementId: "G-HEZX7RZJ19"
 };
 
+const app = initializeApp(firebaseConfig);
+
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig)
 
-export const analytics = getAnalytics(app)
+// let analytics: Analytics;
+// if (app.name && typeof window !== 'undefined') {
+//     analytics = getAnalytics(app);
+// }
+// export { analytics };
 
-export const db = getFirestore(app)
+export const db = getFirestore(app);
+
 
 export function getDocsSnapshot(snapshot: QuerySnapshot<DocumentData>, result: any[]) {
-    snapshot.forEach(get =>
+    snapshot.forEach((get) =>
         result = [...result, { id: get.id, data: get.data() }],
     )
 }
